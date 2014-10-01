@@ -11,6 +11,11 @@ VER=$(cat bower.json | jq --raw-output '.version')
 DIR=release/microphone-$VER
 TAR=microphone-$VER.tar.gz
 
+if [ -z $VER ]; then
+  echo "could not read version"
+  exit 1
+fi
+
 # build and move to release directory
 grunt build
 mkdir -p $DIR
