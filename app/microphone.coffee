@@ -239,7 +239,7 @@ states =
 
       @rec = false
       @conn.send(JSON.stringify(["stop"]))
-      @timer = setTimeout (=> @fsm('timeout')), 7000
+      @timer = setTimeout (=> @fsm('timeout')), 60000
 
       'audioend'
   audioend:
