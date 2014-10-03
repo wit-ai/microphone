@@ -7,7 +7,7 @@ fi
 
 set -x -e
 
-VER=$(cat bower.json | jq --raw-output '.version')
+VER=$(head -n1 app/microphone.coffee | sed '/VERSION/s/VERSION = "\(.*\)"/\1/g')
 DIR=release/microphone-$VER
 TAR=microphone-$VER.tar.gz
 

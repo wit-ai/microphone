@@ -1,3 +1,5 @@
+VERSION = "0.7.0"
+
 navigator.getUserMedia =
   navigator.getUserMedia ||
   navigator.webkitGetUserMedia ||
@@ -154,7 +156,11 @@ states =
       conn = new WebSocket(WEBSOCKET_HOST)
       conn.onopen = (e) =>
         log "connection opened", e
-        conn.send(JSON.stringify(["auth", token]))
+        opts =
+          token: token
+          bps: 16
+          encoding: 'signed-integer'
+        conn.send(JSON.stringify(["auth", opts]))
       conn.onclose = (e) =>
         @fsm('socket_closed')
       conn.onmessage = (e) =>
@@ -181,8 +187,8 @@ states =
           # we want 16bps, 16khz, mono
           n_samples = float32s.length
 
-          # let's convert these 32bits samples into 16bits samples
-          int16s = new Int16Array(float32s.buffer)
+          # let's convert these 32bits samples into 16bits samples
+          int16s = new Int16Array(n_samples)
           for i in [0..n_samples]
             x = float32s[i]
             y = if x < 0
@@ -190,7 +196,9 @@ states =
             else
               x * 0x7fff
 
-          # log "[audiobuffer] rate=#{buffer.sampleRate}, samples=#{n_samples}, bytes=#{int16s.byteLength}"
+            int16s[i] = y
+
+          log "[audiobuffer] rate=#{buffer.sampleRate}, samples=#{n_samples}, bytes=#{int16s.byteLength}"
 
           @conn.send(int16s)
 
