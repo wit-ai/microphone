@@ -13,9 +13,12 @@
     <link rel="stylesheet" href="microphone.css">
     <!-- endbuild -->
   </head>
-  <body>
-    <div id="microphone"></div>
-    <p>Current state is <span id="current-state"></span></p>
+  <body style="text-align: center;">
+    <center><div id="microphone"></div></center>
+    <pre id="result"></pre>
+    <div id="info"></div>
+    <div id="error"></div>
+    <p>Current state is <span id="current-state">none</span></p>
     <input id="state-input" type="text" placeholder="Type a state name" />
     <button id="state-foo">Go to state</button>
 
@@ -26,13 +29,48 @@
      var mic;
      document.addEventListener('DOMContentLoaded', function (e) {
        mic = new Wit.Microphone(document.getElementById("microphone"));
-       mic.onaudiostart = function () {};
-       mic.onaudioend = function () {};
-       mic.onerror = function (err) {
-         console.log(err);
+       var info = function (msg) {
+         document.getElementById("info").innerHTML = msg;
        };
-       mic.onresult = function (result)  {
-         console.log(result);
+       var error = function (msg) {
+         document.getElementById("error").innerHTML = msg;
+       };
+       info("Microphone is not ready yet");
+       mic.onready = function () {
+         info("Microphone is ready to record");
+       };
+       mic.onaudiostart = function () {
+         info("Recording started");
+         error("");
+       };
+       mic.onaudioend = function () {
+         info("Recording stopped, processing started");
+       };
+       mic.onresult = function (intent, entities) {
+         var r = kv("intent", intent);
+
+         for (var k in entities) {
+           var e = entities[k];
+
+           if (!(e instanceof Array)) {
+             r += kv(k, e.value);
+           } else {
+             for (var i = 0; i < e.length; i++) {
+               r += kv(k, e[i].value);
+             }
+           }
+         }
+
+         document.getElementById("result").innerHTML = r;
+       };
+       mic.onerror = function (err) {
+         error("Error: " + err);
+       };
+       mic.onconnecting = function () {
+         info("Microphone is connecting");
+       };
+       mic.ondisconnected = function () {
+         info("Microphone is not connected");
        };
 
        token = localStorage.getItem('wit_token');
@@ -40,6 +78,15 @@
          throw new Error("Could not find token!");
        }
        mic.connect(token);
+       // mic.start();
+       // mic.stop();
+
+       function kv (k, v) {
+         if (toString.call(v) !== "[object String]") {
+           v = JSON.stringify(v);
+         }
+         return k + "=" + v + "\n";
+       }
      });
 
      function changeState(s) {

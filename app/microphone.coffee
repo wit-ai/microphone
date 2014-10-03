@@ -39,7 +39,7 @@ do ->
 
       w.cancelAnimationFrame = (id) -> clearTimeout id
 
-log = if /debug/.test(window.location.search)
+log = if localStorage?.getItem && localStorage.getItem('wit_debug')
   (-> console.log.apply(console, arguments))
 else
   ->
@@ -153,6 +153,7 @@ states =
       # websocket
       conn = new WebSocket(WEBSOCKET_HOST)
       conn.onopen = (e) =>
+        log "connection opened", e
         conn.send(JSON.stringify(["auth", token]))
       conn.onclose = (e) =>
         @fsm('socket_closed')
@@ -196,6 +197,7 @@ states =
         on_stream,
         @handleError
       )
+
       'connecting'
   connecting:
     'auth-ok': -> 'waiting_for_stream'

@@ -30,7 +30,7 @@ module.exports = function (grunt) {
         tasks: ['copy:js_css_fonts_to_tmp']
       },
       coffee: {
-        files: ['<%= yeoman.app %>/*/*.coffee'],
+        files: ['<%= yeoman.app %>/**/*.coffee'],
         tasks: ['coffee']
       },
       livereload: {
