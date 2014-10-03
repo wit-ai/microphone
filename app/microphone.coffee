@@ -174,8 +174,25 @@ states =
         proc = (ctx.createScriptProcessor || ctx.createJavascriptNode).call(ctx, 4096, 1, 1)
         proc.onaudioprocess = (e) =>
           return unless @rec
-          bytes = e.inputBuffer.getChannelData(0)
-          @conn.send(bytes)
+          buffer = e.inputBuffer
+          # Float32Array
+          float32s = buffer.getChannelData(0)
+          # we receive 32bps, 44.1khz audio, mono
+          # we want 16bps, 16khz, mono
+          n_samples = float32s.length
+
+          # let's convert these 32bits samples into 16bits samples
+          int16s = new Int16Array(float32s.buffer)
+          for i in [0..n_samples]
+            x = float32s[i]
+            y = if x < 0
+              x * 0x8000
+            else
+              x * 0x7fff
+
+          # log "[audiobuffer] rate=#{buffer.sampleRate}, samples=#{n_samples}, bytes=#{int16s.byteLength}"
+
+          @conn.send(int16s)
 
         src.connect(proc)
         proc.connect(ctx.destination)
