@@ -283,7 +283,7 @@ Microphone.prototype.fsm = (event) ->
     log "fsm: #{@state} + #{event} -> #{s}", ary
     @state = s
 
-    if s in ['audiostart', 'audioend', 'ready']
+    if s in ['audiostart', 'audioend', 'ready', 'connecting', 'disconnected']
       if _.isFunction(f = this['on' + s])
         f.call(window)
 
