@@ -23,8 +23,8 @@ cp -r dist/* $DIR
 
 # modify assets
 cd $DIR
-echo "/* microphone.js $VER */" | cat - microphone.js > microphone.min.js
-echo "/* microphone.css $VER */" | cat - microphone.css > microphone.min.css
+echo "/* microphone.js $VER */" | cat - microphone.js > js/microphone.min.js
+echo "/* microphone.css $VER */" | cat - microphone.css > css/microphone.min.css
 rm microphone.{js,css}
 rm index.html
 cd -
