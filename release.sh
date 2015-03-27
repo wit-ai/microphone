@@ -7,7 +7,7 @@ fi
 
 set -x -e
 
-VER=$(head -n1 app/microphone.coffee | sed '/VERSION/s/VERSION = "\(.*\)"/\1/g')
+VER=$(head -n1 app/coffee/microphone.coffee | sed '/VERSION/s/VERSION = "\(.*\)"/\1/g')
 DIR=release/microphone-$VER
 TAR=microphone-$VER.tar.gz
 
@@ -23,9 +23,11 @@ cp -r dist/* $DIR
 
 # modify assets
 cd $DIR
-echo "/* microphone.js $VER */" | cat - microphone.js > microphone.min.js
-echo "/* microphone.css $VER */" | cat - microphone.css > microphone.min.css
-rm microphone.{js,css}
+
+echo "/* microphone.js $VER */" | cat - js/microphone.js > js/microphone.min.js
+echo "/* microphone.css $VER */" | cat - css/microphone.css > css/microphone.min.css
+rm js/microphone.js
+rm css/microphone.css
 rm index.html
 cd -
 

@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     },
     watch: {
       compass: {
-        files: ['<%= yeoman.app %>/*.{scss,sass}'],
+        files: ['<%= yeoman.app %>/**/*.{scss,sass}'],
         tasks: ['compass']
       },
       copy: {
@@ -93,22 +93,22 @@ module.exports = function (grunt) {
       default: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>',
+          cwd: '<%= yeoman.app %>/coffee',
           src: '**/*.coffee',
-          dest: '.tmp',
+          dest: '<%= yeoman.tmp %>/js',
           ext: '.js'
         }]
       }
     },
     compass: {
       options: {
-        sassDir: '<%= yeoman.app %>',
-        cssDir: '.tmp',
+        sassDir: '<%= yeoman.app %>/scss',
+        cssDir: '<%= yeoman.tmp %>/css',
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: '<%= yeoman.app %>/bower_components',
+        importPath: '<%= yeoman.app %>',
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
         httpFontsPath: '/styles/fonts',
