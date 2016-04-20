@@ -7,7 +7,10 @@ See quickstart.md
 ## Example
 
 [Home automation demo](http://labs.wit.ai/demo/index.html)
-Source code: https://github.com/wit-ai/house
+
+![Demo](https://github.com/wit-ai/house/blob/master/app/images/house.png)
+
+(Source code: https://github.com/wit-ai/house)
 
 ## API
 
