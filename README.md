@@ -6,10 +6,8 @@ See quickstart.md
 
 ## Example
 
-Home automation demo:
-
-	- URL: http://labs.wit.ai/demo/index.html
-	- Source code: https://github.com/wit-ai/house
+[Home automation demo](http://labs.wit.ai/demo/index.html)
+Source code: https://github.com/wit-ai/house
 
 ## API
 
