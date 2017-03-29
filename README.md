@@ -101,6 +101,7 @@ grunt serve
 ### Release
 
 ```bash
+# bump version in microphone.coffee
 # bump version in bower.json
 ./release.sh
 ```

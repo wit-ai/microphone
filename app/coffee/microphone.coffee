@@ -1,4 +1,4 @@
-VERSION = "0.8.1"
+VERSION = "0.8.2"
 
 navigator.getUserMedia =
   navigator.getUserMedia ||
@@ -53,7 +53,7 @@ WitError = (message, infos) ->
   return @
 WitError.prototype = Error.prototype
 
-WEBSOCKET_HOST = localStorage.getItem('wit_ws') || 'wss://api.wit.ai/speech_ws'
+WEBSOCKET_HOST = localStorage.getItem('wit_ws') || 'wss://ws.wit.ai/speech_ws'
 
 Microphone = (elem) ->
   # object state
