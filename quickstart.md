@@ -6,7 +6,7 @@ This guide will show you how to add Wit to your web app.
 
 To follow this tutorial:
 
-- You need a trained Wit instance (follow [this guide](https://wit.ai/docs/quickstart.html) to get started)
+- You need a trained Wit instance (follow [this guide](https://wit.ai/docs/quickstart) to get started)
 - Your browser must support WebRTC, which is the case of Chrome, Firefox and Opera right now. Safari and IE don’t support WebRTC yet. Please refer [this link](http://caniuse.com/#search=webrtc) for up-to-date information.
 
 ### Step 1: Get Microphone
