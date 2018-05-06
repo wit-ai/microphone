@@ -91,6 +91,8 @@ Microphone = (elem) ->
     """
     elem.className += ' wit-microphone'
     elem.addEventListener 'click', (e) =>
+      if @ctx.state == 'suspended'
+        @ctx.resume()
       @fsm('toggle_record')
 
     svg = @elem.children[1]
