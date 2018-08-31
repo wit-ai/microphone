@@ -30,14 +30,14 @@ In the `myapp` folder, create a file `index.html` containing the snippet on the 
 ```html
   <html>
   <head>
-    <link rel="stylesheet" href="microphone/js/microphone.min.css">
+    <link rel="stylesheet" href="microphone/css/microphone.min.css">
   </head>
   <body style="text-align: center;">
     <center><div id="microphone"></div></center>
     <pre id="result"></pre>
     <div id="info"></div>
     <div id="error"></div>
-    <script src="microphone/css/microphone.min.js"></script>
+    <script src="microphone/js/microphone.min.js"></script>
 
     <script>
       var mic = new Wit.Microphone(document.getElementById("microphone"));
