@@ -240,12 +240,16 @@ states =
     timeout: -> 'ready'
     start: -> @fsm('toggle_record')
     toggle_record: ->
-      @conn.send(JSON.stringify(["start", @context || {}]))
-      @rec = true
       console.error "No context" if !@ctx
       console.error "No stream" if !@stream
       console.error "No source" if !@src
       console.error "No processor" if !@proc
+
+      if @ctx.state == 'suspended'
+        @ctx.resume()
+
+      @conn.send(JSON.stringify(["start", @context || {}]))
+      @rec = true
 
       'audiostart'
   audiostart:
