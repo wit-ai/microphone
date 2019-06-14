@@ -108,4 +108,4 @@ grunt serve
 
 ## License
 
-The license for wit-ios can be found in LICENSE file in the root directory of this source tree.
+The license for microphone can be found in LICENSE file in the root directory of this source tree.
