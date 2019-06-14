@@ -1,3 +1,4 @@
+// Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
 // Generated on 2014-01-21 using generator-webapp 0.4.4
 'use strict';
 
