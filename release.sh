@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
 
 if ! which jq; then
   echo 'you need jq -- brew install jq or http://stedolan.github.io/jq/'
