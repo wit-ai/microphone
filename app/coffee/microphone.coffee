@@ -1,3 +1,4 @@
+# Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
 VERSION = "0.8.3"
 
 navigator.getUserMedia =
