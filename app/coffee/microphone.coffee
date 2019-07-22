@@ -149,7 +149,7 @@ Microphone = (elem) ->
 
 states =
   disconnected:
-    connect: (token) ->
+    connect: (token, api_version) ->
       if not token
         @handleError('No token provided')
 
@@ -161,6 +161,7 @@ states =
           token: token
           bps: 16
           encoding: 'signed-integer'
+          version: api_version || 20130816
         conn.send(JSON.stringify(["auth", opts]))
       conn.onclose = (e) =>
         @fsm('socket_closed')
