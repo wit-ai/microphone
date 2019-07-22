@@ -1,5 +1,5 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
-VERSION = "0.8.3"
+VERSION = "0.8.4"
 
 navigator.getUserMedia =
   navigator.getUserMedia ||
@@ -318,8 +318,8 @@ Microphone.prototype.fsm = (event) ->
 
   s
 
-Microphone.prototype.connect = (token) ->
-  @fsm('connect', token)
+Microphone.prototype.connect = (token, api_version) ->
+  @fsm('connect', token, api_version)
 
 Microphone.prototype.start = ->
   @fsm('start')
