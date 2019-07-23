@@ -1,5 +1,5 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
-VERSION = "0.8.3"
+VERSION = "0.8.4"
 
 navigator.getUserMedia =
   navigator.getUserMedia ||
@@ -149,7 +149,7 @@ Microphone = (elem) ->
 
 states =
   disconnected:
-    connect: (token) ->
+    connect: (token, version) ->
       if not token
         @handleError('No token provided')
 
@@ -161,6 +161,7 @@ states =
           token: token
           bps: 16
           encoding: 'signed-integer'
+          version: version || 20130816
         conn.send(JSON.stringify(["auth", opts]))
       conn.onclose = (e) =>
         @fsm('socket_closed')
@@ -317,8 +318,8 @@ Microphone.prototype.fsm = (event) ->
 
   s
 
-Microphone.prototype.connect = (token) ->
-  @fsm('connect', token)
+Microphone.prototype.connect = (token, api_version) ->
+  @fsm('connect', token, api_version)
 
 Microphone.prototype.start = ->
   @fsm('start')

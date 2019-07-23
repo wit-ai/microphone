@@ -10,13 +10,13 @@ To follow this tutorial:
 - Your browser must support WebRTC, which is the case of Chrome, Firefox and Opera right now. Safari and IE don’t support WebRTC yet. Please refer [this link](http://caniuse.com/#search=webrtc) for up-to-date information.
 
 ### Step 1: Get Microphone
- 
-Create a new folder for your app, download our [Web SDK (aka. Microphone)](https://github.com/wit-ai/microphone/releases/download/0.8.2/microphone-0.8.2.tar.gz) and extract the archive
+
+Create a new folder for your app, download our [Web SDK (aka. Microphone)](https://github.com/wit-ai/microphone/releases/download/0.8.4/microphone-0.8.4.tar.gz) and extract the archive
 
 ```bash
   mkdir myapp
   cd myapp
-  curl -sL https://github.com/wit-ai/microphone/releases/download/0.8.2/microphone-0.8.2.tar.gz | tar xvzf -
+  curl -sL https://github.com/wit-ai/microphone/releases/download/0.8.4/microphone-0.8.4.tar.gz | tar xvzf -
   mv microphone-* microphone
 ```
 
