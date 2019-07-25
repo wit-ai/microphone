@@ -1,5 +1,5 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
-VERSION = "0.8.4"
+VERSION = "0.8.5"
 
 navigator.getUserMedia =
   navigator.getUserMedia ||
