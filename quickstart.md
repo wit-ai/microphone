@@ -11,12 +11,12 @@ To follow this tutorial:
 
 ### Step 1: Get Microphone
 
-Create a new folder for your app, download our [Web SDK (aka. Microphone)](https://github.com/wit-ai/microphone/releases/download/0.8.4/microphone-0.8.4.tar.gz) and extract the archive
+Create a new folder for your app, download our [Web SDK (aka. Microphone)](https://github.com/wit-ai/microphone/releases/download/0.8.5/microphone-0.8.5.tar.gz) and extract the archive
 
 ```bash
   mkdir myapp
   cd myapp
-  curl -sL https://github.com/wit-ai/microphone/releases/download/0.8.4/microphone-0.8.4.tar.gz | tar xvzf -
+  curl -sL https://github.com/wit-ai/microphone/releases/download/0.8.5/microphone-0.8.5.tar.gz | tar xvzf -
   mv microphone-* microphone
 ```
 
