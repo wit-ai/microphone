@@ -76,8 +76,8 @@ Microphone = (elem) ->
       f.call(window, err, e)
   @handleResult = (res) ->
     if _.isFunction(f = @onresult)
-      intent   = res.outcome.intent
-      entities = res.outcome.entities
+      intent   = res.outcome?.intent
+      entities = res.outcome?.entities
       f.call(window, intent, entities, res)
 
   # DOM setup
